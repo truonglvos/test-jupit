@@ -1,0 +1,5 @@
+@use "variables" as var;
+
+@function pxToRem($value) {
+  @return calc($value/ var.$font-size-base) + rem;
+}

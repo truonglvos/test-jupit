@@ -1,0 +1,9 @@
+@use "variables" as var;
+@use "function" as fn;
+
+.game-container {
+  display: flex;
+  margin-top: fn.pxToRem(20);
+  padding: 0 fn.pxToRem(50);
+  flex-wrap: wrap;
+}

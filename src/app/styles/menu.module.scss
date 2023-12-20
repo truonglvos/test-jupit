@@ -1,0 +1,17 @@
+@use "variables" as var;
+@use "function" as fn;
+
+.menu {
+  display: flex;
+  justify-content: space-around;
+  background-color: var.$menu-bg;
+  color: var.$menu-color;
+  flex-wrap: wrap;
+  &__item {
+    cursor: pointer;
+    padding: fn.pxToRem(10) fn.pxToRem(20);
+  }
+  &__active {
+    background-color: var.$menu-bg-active;
+  }
+}

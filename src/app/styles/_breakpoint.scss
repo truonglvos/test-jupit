@@ -1,0 +1,91 @@
+@import "./variables";
+
+@mixin xl {
+  @media screen and (min-width: #{$xl-width}) {
+    @content;
+  }
+}
+
+@mixin xlg {
+  @media screen and (min-width: #{$xlg-width}) {
+    @content;
+  }
+}
+
+@mixin lg {
+  @media screen and (min-width: #{$lg-width}) {
+    @content;
+  }
+}
+
+@mixin md {
+  @media (min-width: #{$md-width}) {
+    @content;
+  }
+}
+
+@mixin ms-md {
+  @media (min-width: #{$md-width}) and (max-width: #{$lg-width}) {
+    @content;
+  }
+}
+
+@mixin sm {
+  @media (min-width: #{$sm-width}) {
+    @content;
+  }
+}
+
+@mixin xs {
+  @media screen and (min-width: #{$xs-width}) {
+    @content;
+  }
+}
+
+@mixin desktop {
+  @media screen and (min-width: #{$md-width}) {
+    @content;
+  }
+}
+
+@mixin device {
+  @media screen and (max-width: #{$md-width - 1px}) {
+    @content;
+  }
+}
+
+@mixin tablet {
+  @media (min-width: #{$sm-width}) and (max-width: #{$md-width - 1px}) {
+    @content;
+  }
+}
+
+@mixin print {
+  @media print {
+    @content;
+  }
+}
+
+@mixin landscape {
+  @media screen and (orientation: landscape) {
+    @content;
+  }
+}
+
+@mixin portrait {
+  @media screen and (max-device-width: 920px) {
+    @content;
+  }
+}
+
+@mixin ie {
+  @media screen and (min-width: 0\0) {
+    @content;
+  }
+}
+
+@mixin edge {
+  @supports (display: -ms-grid) {
+    @content;
+  }
+}
