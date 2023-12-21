@@ -5,7 +5,12 @@ import Menu from "./components/menu/menu";
 import Games from "./components/games/games";
 import Loading from "./components/loading/loading";
 import { games } from "./constants/games.constant";
-import { ACTIVE, GAMES_URL } from "./constants/common.constant";
+import {
+  ACTIVE,
+  GAMES_URL,
+  OTHERS_VALUE,
+  OTHER,
+} from "./constants/common.constant";
 import httpClient from "./services/httpClient";
 import { GetStaticProps } from "next";
 import { GameItem } from "./models/game.model";
@@ -49,13 +54,17 @@ export default function Home() {
         const game = games[i];
         const cates = game.categories;
         for (let cate of cates) {
-          if (!menus.includes(cate)) {
-            menus.push(cate);
+          let newCate = cate;
+          if (OTHERS_VALUE.includes(cate)) {
+            newCate = OTHER;
           }
-          if (gamesMap.has(cate)) {
-            gamesMap.get(cate)?.push(game);
+          if (!menus.includes(newCate)) {
+            menus.push(newCate);
+          }
+          if (gamesMap.has(newCate)) {
+            gamesMap.get(newCate)?.push(game);
           } else {
-            gamesMap.set(cate, new Array(game));
+            gamesMap.set(newCate, new Array(game));
           }
         }
       }
@@ -84,7 +93,12 @@ export default function Home() {
             active={active}
             handleSetActive={handleSetActive}
           />
-          <Games games={gamesActive} />
+          <Games
+            games={gamesActive}
+            active={active}
+            top={gamesMap.get("gamesMap") || []}
+            news={gamesMap.get("new") || []}
+          />
         </main>
       )}
     </>
